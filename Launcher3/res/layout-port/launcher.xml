@@ -16,6 +16,8 @@
 
 <!-- Full screen view projects under the status bar and contains the background -->
 <com.android.launcher3.LauncherRootView
+    tools:ignore="MissingDefaultResource"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:launcher="http://schemas.android.com/apk/res-auto"
 

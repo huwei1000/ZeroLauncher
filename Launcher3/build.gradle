@@ -1,11 +1,27 @@
 buildscript {
     repositories {
+        google()
         mavenCentral()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven {
+            url 'https://maven.aliyun.com/repository/central/'
+        }
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url "https://dl.bintray.com/lukaville/maven"
+        }
+        maven {
+            url "https://maven.google.com/"
+        }
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.0'
+//        classpath 'com.android.tools.build:gradle:4.2.0'
+        classpath 'com.android.tools.build:gradle:3.5.1'
+//        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.0'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.8'
     }
 }
 
@@ -13,15 +29,17 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.protobuf'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.0'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.0'
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 26
+        minSdkVersion 27
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        flavorDimensions "1"
+        //applicationId 'com.android.launcher3.huwei'
+        applicationId 'com.android.launcher3'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -50,43 +68,60 @@ android {
                 srcDir 'protos/'
                 srcDir 'proto_overrides/'
             }
+//            manifest.srcFile "AndroidManifest.xml"
         }
 
-        androidTest {
-            res.srcDirs = ['tests/res']
-            java.srcDirs = ['tests/src']
-            manifest.srcFile "tests/AndroidManifest-common.xml"
-        }
+//        androidTest {
+//            res.srcDirs = ['tests/res']
+//            java.srcDirs = ['tests/src']
+//            manifest.srcFile "tests/AndroidManifest-common.xml"
+//        }
 
         aosp {
             java.srcDirs = ['src_flags']
             manifest.srcFile "AndroidManifest.xml"
         }
 
-        aospAndroidTest {
-            manifest.srcFile "tests/AndroidManifest.xml"
-        }
+//        aospAndroidTest {
+//            manifest.srcFile "tests/AndroidManifest.xml"
+//        }
 
-        l3go {
-            res.srcDirs = ['go/res']
-            java.srcDirs = ['go/src_flags']
-            // Note: we are using the Launcher3 manifest here because the gradle manifest-merger uses
-            // different attributes than the build system.
-            manifest.srcFile "AndroidManifest.xml"
-        }
+//        l3go {
+//            res.srcDirs = ['go/res']
+//            java.srcDirs = ['go/src_flags']
+//            // Note: we are using the Launcher3 manifest here because the gradle manifest-merger uses
+//            // different attributes than the build system.
+//            manifest.srcFile "AndroidManifest.xml"
+//        }
 
-        l3goAndroidTest {
-            manifest.srcFile "tests/AndroidManifest.xml"
-        }
+//        l3goAndroidTest {
+//            manifest.srcFile "tests/AndroidManifest.xml"
+//        }
     }
 }
 
 repositories {
+    google()
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    //添加各种源
+    maven {
+        url 'https://maven.aliyun.com/repository/central/'
+    }
+    maven {
+        url "https://jitpack.io"
+    }
+    maven {
+        url "https://dl.bintray.com/lukaville/maven"
+    }
+    maven {
+        url "https://maven.google.com/"
+    }
     mavenCentral()
-    jcenter()
+    //jcenter() // Warning: this repository is going to shut down soon
 }
 
-final String SUPPORT_LIBS_VERSION = '26.0.0-SNAPSHOT'
+//final String SUPPORT_LIBS_VERSION = '26.0.0-SNAPSHOT'
+final String SUPPORT_LIBS_VERSION = '26.0.0'
 dependencies {
     compile "com.android.support:support-v4:${SUPPORT_LIBS_VERSION}"
     compile "com.android.support:support-dynamic-animation:${SUPPORT_LIBS_VERSION}"

@@ -1,4 +1,5 @@
-<resources>
+<resources tools:ignore="MissingDefaultResource"
+    xmlns:tools="http://schemas.android.com/tools">
 <!-- Dynamic Grid -->
     <!-- Out of 100, the percent of space the overview bar should try and take vertically. -->
     <integer name="config_dynamic_grid_overview_icon_zone_percentage">22</integer>

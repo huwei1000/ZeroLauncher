@@ -14,7 +14,8 @@
      limitations under the License.
 -->
 
-<resources>
+<resources tools:ignore="MissingDefaultResource"
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Container -->
     <item name="container_margin" format="fraction" type="fraction">12%</item>
 
